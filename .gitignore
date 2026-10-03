@@ -1,0 +1,20 @@
+# Neovim & local sessions
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+*.swp
+*.swo
+*.swn
+
+# Local shada & state
+*.shada
+*.shada.*
+
+# Ignore docs folder as requested by user
+/docs/
+docs/

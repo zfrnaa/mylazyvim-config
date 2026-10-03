@@ -22,3 +22,6 @@ docs/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Neovim 0.10+ package lock
+nvim-pack-lock.json

@@ -6,7 +6,16 @@ A clean, reproducible, cross-platform [LazyVim](https://www.lazyvim.org/) config
 
 ## ✨ Features & Highlights
 
-- 🎨 **Aesthetic & Theme**: Clean Gruvbox theme (`ellisonleao/gruvbox.nvim`) configured with native background transparency for terminal compositors.
+- 🎨 **Aesthetic & UI Suite**:
+  - **Gruvbox Theme**: Clean Gruvbox theme (`ellisonleao/gruvbox.nvim`) configured with native background transparency for terminal compositors.
+  - **Rounded Pill Lualine Statusline**: Gruvbox-themed statusline (`nvim-lualine/lualine.nvim`) with rounded bubble separators (`` / ``) and real-time macro recording indicator (`󰑋 @<reg>`).
+  - **Snacks Dashboard**: Custom Neovim ASCII banner with quick action keybindings (`f` find, `n` new, `g` grep, `r` recent, `c` config, `l` lazy, `q` quit).
+  - **Scope-Aware Indent Guides**: Subtle vertical guide lines (`│`) with active Treesitter/syntax scope highlighting powered by `snacks.nvim`.
+- ⚡ **Productivity & Navigation Suite**:
+  - **Harpoon 2** (`ThePrimeagen/harpoon`): Lightning-fast file bookmarking and switching across your 4 most frequented buffers (`<leader>1`-`<leader>4`, `<leader>ha`, `<leader>hh`, `<leader>hn`, `<leader>hp`).
+  - **Flash.nvim** (`folke/flash.nvim`): Next-generation code navigation with search labels (`s`), Treesitter node selection (`S`), and operator-pending remote motions (`r`).
+  - **Undotree** (`mbbill/undotree`): Visual undo history tree explorer (`<leader>gu`) to inspect and revert changes across branching edit sessions.
+  - **Todo-Comments** (`folke/todo-comments.nvim`): Syntax highlighting and rapid navigation for `TODO`, `FIXME`, `HACK`, `PERF`, `NOTE`, and `WARN` comments (`]t`, `[t`), with workspace search via Snacks picker (`<leader>st`).
 - ⌨️ **Ergonomic Keymaps**: Seamless exit from insert mode with `jk`.
 - 🍿 **Snacks.nvim Integration**:
   - Smooth terminal scrolling.
@@ -91,12 +100,47 @@ The script will back up any existing `~/.config/nvim` directory with a timestamp
 | `<leader>qq` | Normal | Quit Neovim |
 | `<leader>w` | Normal | Save file |
 
-### Snacks & Git
+### Motion & Jumping (Flash.nvim)
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `s` | Normal, Visual, Operator | Flash jump to search target |
+| `S` | Normal, Visual, Operator | Flash Treesitter node selection |
+| `r` | Operator-pending | Remote Flash jump |
+
+### Quick Buffer Switching (Harpoon 2)
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `<leader>ha` | Normal | Add current buffer to Harpoon list |
+| `<leader>hh` | Normal | Toggle Harpoon quick menu UI |
+| `<leader>1` - `<leader>4` | Normal | Instantly jump to Harpoon mark 1 through 4 |
+| `<leader>hn` | Normal | Jump to next Harpoon file |
+| `<leader>hp` | Normal | Jump to previous Harpoon file |
+
+### Git & Undo History
 | Key | Mode | Description |
 | :--- | :--- | :--- |
 | `<leader>gg` | Normal | Open LazyGit scoped to the current buffer's directory |
 | `<leader>gl` | Normal | Open LazyGit commit log |
+| `<leader>gu` | Normal | Toggle Undo Tree visual branch history browser |
+
+### Diagnostics & Todo-Comments (Snacks & Trouble)
+| Key | Mode | Description |
+| :--- | :--- | :--- |
 | `<leader>xx` | Normal | Toggle built-in diagnostics problems list (Quickfix) |
+| `<leader>st` | Normal | Search Todo comments workspace-wide via Snacks Picker |
+| `]t` | Normal | Jump to next Todo comment |
+| `[t` | Normal | Jump to previous Todo comment |
+
+### Snacks Dashboard (Startup Screen)
+| Key | Description | Action |
+| :--- | :--- | :--- |
+| `f` | Find File | Search project files via Snacks picker |
+| `n` | New File | Open new empty buffer and enter insert mode |
+| `g` | Find Text | Live grep across workspace via Snacks picker |
+| `r` | Recent Files | Search recent files via Snacks picker |
+| `c` | Config | Browse Neovim configuration files |
+| `l` | Lazy | Open Lazy.nvim plugin manager |
+| `q` | Quit | Quit Neovim |
 
 ### Database & MSSQL
 | Key | Mode | Description |
@@ -133,10 +177,16 @@ The script will back up any existing `~/.config/nvim` directory with a timestamp
     │   └── options.lua    # Global Neovim options (timeoutlen, wrap)
     ├── plugins/
     │   ├── colorscheme.lua# Transparent Gruvbox theme configuration
+    │   ├── flash.lua      # Flash.nvim motion & jumping (s, S, r)
+    │   ├── git-conflict.lua # Inline git merge conflict resolution
+    │   ├── harpoon.lua    # Harpoon 2 fast file navigation
+    │   ├── lualine.lua    # Gruvbox pill statusline with macro recorder
     │   ├── mssql.lua      # MSSQL runner & keybindings
     │   ├── python.lua     # Cross-platform venv autodetection for Pyright
-    │   ├── snacks.lua     # Snacks.nvim (scroll, statuscolumn, lazygit, quickfix)
-    │   └── sql-utils.lua  # SQL formatting via conform.nvim
+    │   ├── snacks.lua     # Snacks.nvim (dashboard, indent guides, scroll, statuscolumn, lazygit)
+    │   ├── sql-utils.lua  # SQL formatting via conform.nvim
+    │   ├── todo-comments.lua # Todo-comments highlighting & picker integration
+    │   └── undotree.lua   # Visual undo history browser (<leader>gu)
     └── utils/
         └── history_wiper.lua # Inactivity-based & manual history cleaner
 ```

@@ -4,3 +4,4 @@
 
 vim.opt.timeoutlen = 500
 vim.opt.wrap = true
+vim.opt.undofile = true

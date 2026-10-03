@@ -39,6 +39,7 @@ To make full use of all plugins and LSP servers, ensure the following tools are 
 | **LazyGit** | Terminal Git UI | `winget install JesseDuffield.lazygit` | `brew install lazygit` | Package manager / go |
 | **Node.js** | Mason LSPs & SQL formatting | `winget install OpenJS.NodeJS` | `brew install node` | `apt install nodejs npm` |
 | **Python** | Python tooling & LSPs | `winget install Python.Python.3.12` | `brew install python` | `apt install python3` |
+| **sqlcmd** | MSSQL query execution | `winget install Microsoft.SqlCmd` | `brew install sqlcmd` | `mssql-tools` / package manager |
 
 > [!TIP]
 > For SQL formatting support, install `sql-formatter` globally with Node.js:

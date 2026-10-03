@@ -18,3 +18,7 @@ data
 # Ignore docs folder as requested by user
 /docs/
 docs/
+
+# OS generated files
+.DS_Store
+Thumbs.db

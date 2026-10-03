@@ -34,9 +34,13 @@ echo "[2/4] Verifying destination directory..."
 echo "  Target: $TARGET"
 echo "  Source: $SCRIPT_DIR"
 
+IN_PLACE=false
 ALREADY_LINKED=false
 
-if [ -L "$TARGET" ]; then
+if [ "$SCRIPT_DIR" = "$TARGET" ]; then
+  echo "  [OK] Repository is already located at target destination ($TARGET)."
+  IN_PLACE=true
+elif [ -L "$TARGET" ]; then
   RESOLVED_TARGET="$(readlink -f "$TARGET" 2>/dev/null || readlink "$TARGET" 2>/dev/null || true)"
   if [ "$RESOLVED_TARGET" = "$SCRIPT_DIR" ]; then
     echo "  [OK] Destination is already linked to this repository."
@@ -44,7 +48,7 @@ if [ -L "$TARGET" ]; then
   fi
 fi
 
-if [ "$ALREADY_LINKED" = false ] && { [ -e "$TARGET" ] || [ -L "$TARGET" ]; }; then
+if [ "$IN_PLACE" = false ] && [ "$ALREADY_LINKED" = false ] && { [ -e "$TARGET" ] || [ -L "$TARGET" ]; }; then
   TIMESTAMP="$(date +%Y%m%d%H%M%S)"
   BACKUP="${TARGET}.bak.${TIMESTAMP}"
   echo "  Existing configuration detected. Backing up to:"
@@ -55,7 +59,9 @@ fi
 
 # 3. Create symlink
 echo "[3/4] Linking configuration..."
-if [ "$ALREADY_LINKED" = true ]; then
+if [ "$IN_PLACE" = true ]; then
+  echo "  Repository is already in target destination, skipping link creation."
+elif [ "$ALREADY_LINKED" = true ]; then
   echo "  Symlink already exists, skipping."
 else
   mkdir -p "$(dirname "$TARGET")"

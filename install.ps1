@@ -81,9 +81,12 @@ Write-Host "[2/4] Verifying destination directory..." -ForegroundColor Cyan
 Write-Host "  Target: $targetDir"
 Write-Host "  Source: $repoRoot"
 
+$inPlace = ($repoRoot -eq $targetDir)
 $alreadyLinked = $false
 
-if (Test-Path -LiteralPath $targetDir) {
+if ($inPlace) {
+    Write-Host "  [OK] Repository is already located at target destination ($targetDir)." -ForegroundColor Green
+} elseif (Test-Path -LiteralPath $targetDir) {
     $item = Get-Item -LiteralPath $targetDir -Force
     if ($item.LinkType -and $item.Target) {
         $currentTarget = if ($item.Target -is [array]) { $item.Target[0] } else { $item.Target }
@@ -109,7 +112,9 @@ Write-Host ""
 # 3. Create Symlink or Junction
 Write-Host "[3/4] Linking configuration..." -ForegroundColor Cyan
 
-if ($alreadyLinked) {
+if ($inPlace) {
+    Write-Host "  Repository is already in target destination, skipping link creation." -ForegroundColor Green
+} elseif ($alreadyLinked) {
     Write-Host "  Link already in place, skipping link creation." -ForegroundColor Green
 } else {
     $parentDir = Split-Path -Parent $targetDir

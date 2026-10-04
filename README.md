@@ -158,41 +158,6 @@ The script will back up any existing `~/.config/nvim` directory with a timestamp
 
 ---
 
-## Repository Structure
-
-```
-├── .gitignore             # Standard ignore rules (logs, swap files, local shada)
-├── init.lua               # Bootstrap entry point & history wiper initializer
-├── install.ps1            # Windows automated installer (symlink/junction)
-├── install.sh             # Linux/macOS automated installer (symlink)
-├── lazy-lock.json         # Pinned reproducible plugin versions
-├── lazyvim.json           # Enabled LazyVim extras and version info
-├── stylua.toml            # Lua code formatter configuration
-├── README.md              # Documentation
-└── lua/
-    ├── config/
-    │   ├── autocmds.lua   # Custom user autocommands
-    │   ├── keymaps.lua    # Custom keymaps (e.g., jk escape)
-    │   ├── lazy.lua       # Lazy.nvim plugin manager configuration
-    │   └── options.lua    # Global Neovim options (timeoutlen, wrap)
-    ├── plugins/
-    │   ├── colorscheme.lua# Transparent Gruvbox theme configuration
-    │   ├── flash.lua      # Flash.nvim motion & jumping (s, S, r)
-    │   ├── git-conflict.lua # Inline git merge conflict resolution
-    │   ├── harpoon.lua    # Harpoon 2 fast file navigation
-    │   ├── lualine.lua    # Gruvbox pill statusline with macro recorder
-    │   ├── mssql.lua      # MSSQL runner & keybindings
-    │   ├── python.lua     # Cross-platform venv autodetection for Pyright
-    │   ├── snacks.lua     # Snacks.nvim (dashboard, indent guides, scroll, statuscolumn, lazygit)
-    │   ├── sql-utils.lua  # SQL formatting via conform.nvim
-    │   ├── todo-comments.lua # Todo-comments highlighting & picker integration
-    │   └── undotree.lua   # Visual undo history browser (<leader>gu)
-    └── utils/
-        └── history_wiper.lua # Inactivity-based & manual history cleaner
-```
-
----
-
 ## Customization & Updating
 
 - **Add Plugins**: Place new plugin specifications in `lua/plugins/*.lua`. LazyVim will automatically load them.

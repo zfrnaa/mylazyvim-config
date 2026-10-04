@@ -1,10 +1,10 @@
-# ⚡ Portable LazyVim Configuration
+# Portable LazyVim Configuration
 
 A clean, reproducible, cross-platform [LazyVim](https://www.lazyvim.org/) configuration optimized for fast development workflows across **Windows**, **macOS**, and **Linux**.
 
 ---
 
-## ✨ Features & Highlights
+## Features & Highlights
 
 - 🎨 **Aesthetic & UI Suite**:
   - **Gruvbox Theme**: Clean Gruvbox theme (`ellisonleao/gruvbox.nvim`) configured with native background transparency for terminal compositors.
@@ -35,7 +35,7 @@ A clean, reproducible, cross-platform [LazyVim](https://www.lazyvim.org/) config
 
 ---
 
-## 🛠️ Prerequisites & Recommendations
+## Prerequisites & Recommendations
 
 To make full use of all plugins and LSP servers, ensure the following tools are installed:
 
@@ -58,7 +58,7 @@ To make full use of all plugins and LSP servers, ensure the following tools are 
 
 ---
 
-## 🚀 Installation
+## Installation
 
 Clone this repository and run the included turnkey installation script for your operating system.
 
@@ -91,7 +91,7 @@ The script will back up any existing `~/.config/nvim` directory with a timestamp
 
 ---
 
-## ⌨️ Key Keybindings Cheat Sheet
+## Key Keybindings Cheat Sheet
 
 ### General & Navigation
 | Key | Mode | Description |
@@ -158,7 +158,7 @@ The script will back up any existing `~/.config/nvim` directory with a timestamp
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 ├── .gitignore             # Standard ignore rules (logs, swap files, local shada)
@@ -193,7 +193,7 @@ The script will back up any existing `~/.config/nvim` directory with a timestamp
 
 ---
 
-## 🔧 Customization & Updating
+## Customization & Updating
 
 - **Add Plugins**: Place new plugin specifications in `lua/plugins/*.lua`. LazyVim will automatically load them.
 - **Update Plugins**: Run `:Lazy` inside Neovim and press `U` to update plugins. Lock changes with `:Lazy log` or commit the updated `lazy-lock.json`.
